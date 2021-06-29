@@ -75,12 +75,19 @@ def Lab2RGB(im):
 
 
 def normalize(im):
-
+    #return im
     return (im - im.min())/(im.max()-im.min())
 
+def normalizeTer(img):
+    sum = img[:,:,0] + img[:,:,1] + img[:,:,2]
+    img[:,:,0] /= sum
+    img[:,:,1] /= sum
+    img[:,:,2] /= sum
+    return img
+
 def normalizeBis(im):
-    #for i in range(0,3):
-    im[:,:,0] = (im[:,:,0] - im[:,:,0].min())/(im[:,:,0].max()-im[:,:,0].min())
+    for i in range(0,3):
+        im[:,:,0] = (im[:,:,0] - im[:,:,0].min())/(im[:,:,0].max()-im[:,:,0].min())
 
     return im
 
